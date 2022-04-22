@@ -216,6 +216,7 @@ def schema_for_column_datatype(col):
 
     if data_type == 'uuid':
         schema['type'] = nullable_column('string', col.is_primary_key)
+        schema['format'] = 'uuid'
         return schema
 
     if data_type == 'hstore':
