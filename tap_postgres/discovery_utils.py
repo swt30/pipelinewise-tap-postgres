@@ -273,7 +273,6 @@ def schema_for_column_datatype(col):
         schema['type'] = nullable_column('string', col.is_primary_key)
         if col.character_maximum_length:
             schema['maxLength'] = col.character_maximum_length
-
         return schema
 
     if data_type == 'character':

@@ -109,7 +109,7 @@ def sync_method_for_streams(streams, state, default_replication_method):
         md_map = metadata.to_map(stream['metadata'])
         desired_columns = [c for c in stream['schema']['properties'].keys() if
                            sync_common.should_sync_column(md_map, c)]
-        desired_columns.sort()
+        # desired_columns.sort()
 
         if len(desired_columns) == 0:
             LOGGER.warning('There are no columns selected for stream %s, skipping it', stream['tap_stream_id'])
@@ -159,7 +159,7 @@ def sync_traditional_stream(conn_config, stream, state, sync_method, end_lsn):
     md_map = metadata.to_map(stream['metadata'])
     conn_config['dbname'] = md_map.get(()).get('database-name')
     desired_columns = [c for c in stream['schema']['properties'].keys() if sync_common.should_sync_column(md_map, c)]
-    desired_columns.sort()
+    # desired_columns.sort()
 
     if len(desired_columns) == 0:
         LOGGER.warning('There are no columns selected for stream %s, skipping it', stream['tap_stream_id'])
